@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/AndriiVKR/Parabank-Playwright.git', branch: 'main'
+                git url: 'https://github.com/AndriiVKR/Parabank-Playwright.git', branch: 'main', credentialsId: 'github-credentials'
             }
         }
         stage('Build Docker Image') {
