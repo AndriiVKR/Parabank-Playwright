@@ -3,18 +3,17 @@ package com.example.tests;
 import com.example.pages.AccountOverviewPage;
 import com.example.pages.ParaBankLoginPage;
 import com.example.pages.ParaBankRegistrationPage;
+import com.example.utils.BrowserSetup;
 import com.example.utils.CredentialsReader;
 import com.microsoft.playwright.*;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Map;
 
-public class BaseTest {
+public class BaseTest extends BrowserSetup{
 
     protected Playwright playwright;
     protected Browser browser;
@@ -26,18 +25,15 @@ public class BaseTest {
 
 
 
+    @Parameters({"browserType"})
     @BeforeMethod
-    public void setUp() {
-        playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        context = browser.newContext();
-        context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true).setSources(true));
+    public void setUp(@Optional("chromium") String browserType) {
+        context = BrowserSetup.getBrowserContext(browserType);
         page = context.newPage();
+
         paraBankLoginPage = new ParaBankLoginPage(page);
         paraBankRegistrationPage = new ParaBankRegistrationPage(page);
         accountOverviewPage = new AccountOverviewPage(page);
-
-
     }
 
     @DataProvider(name = "credentials")

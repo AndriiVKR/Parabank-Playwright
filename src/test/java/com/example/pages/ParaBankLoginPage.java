@@ -1,5 +1,5 @@
 package com.example.pages;
-import com.example.utils.ConfigReader;
+
 import com.microsoft.playwright.Page;
 
 public class ParaBankLoginPage extends BasePage{

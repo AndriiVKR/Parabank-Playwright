@@ -7,6 +7,7 @@ public abstract class BasePage {
     protected final Page page;
 
     String baseUrl = ConfigReader.get("base.url");
+    protected String registerUrl = ConfigReader.get("register.url");
 
     public BasePage(Page page) {
         this.page = page;

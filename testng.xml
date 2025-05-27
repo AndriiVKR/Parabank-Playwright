@@ -1,13 +1,30 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="ParaBankTestSuite">
-    <test name="RegistrationTests">
+<suite name="ParaBankTestSuite" parallel="tests" thread-count="3">
+    <test name="RegistrationTests-Chromium">
+        <parameter name="browser" value="chromium"/>
         <classes>
             <class name="com.example.tests.ParaBankRegistrationTest"/>
         </classes>
     </test>
+
+    <test name="RegistrationTests-Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.example.tests.ParaBankRegistrationTest"/>
+        </classes>
+    </test>
+
+    <test name="RegistrationTests-WebKit">
+        <parameter name="browser" value="webkit"/>
+        <classes>
+            <class name="com.example.tests.ParaBankRegistrationTest"/>
+        </classes>
+    </test>
+
 <!--    <test name="LoginTests">-->
 <!--        <classes>-->
 <!--            <class name="com.example.tests.ParaBankLoginTest"/>-->
 <!--        </classes>-->
 <!--    </test>-->
 </suite>
+

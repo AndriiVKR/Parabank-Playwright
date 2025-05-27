@@ -1,7 +1,6 @@
 
 package com.example.tests;
 
-import com.example.pages.ParaBankLoginPage;
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
 
@@ -17,5 +16,4 @@ public class ParaBankLoginTest extends BaseTest {
             page.screenshot(new Page.ScreenshotOptions().setPath(java.nio.file.Paths.get("failure-" + userId + ".png")));
         }
     }
-
 }

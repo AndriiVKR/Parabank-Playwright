@@ -1,24 +1,9 @@
 package com.example.tests;
 
-import com.example.pages.ParaBankLoginPage;
-import com.example.pages.ParaBankRegistrationPage;
-import com.example.utils.BrowserSetup;
-import com.example.utils.CredentialsReader;
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Tracing;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
-
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.Map;
-
 import static org.testng.AssertJUnit.assertTrue;
 
 public class ParaBankRegistrationTest extends BaseTest{
-
 
     @Test(dataProvider = "registrationData")
     public void testRegistration(String userId, String firstName, String lastName, String address, String city,
