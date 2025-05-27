@@ -46,5 +46,9 @@ test-artifacts/screenshots/
 test-artifacts/traces/
 test-artifacts/videos/
 
+# Sensitive resource files
+src/test/resources/credentials.json
+src/test/resources/registration-data.json
+
 # System files
 Thumbs.db
