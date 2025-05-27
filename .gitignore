@@ -44,6 +44,7 @@ build/
 # Test artifacts (optional, if you want to exclude)
 test-artifacts/screenshots/
 test-artifacts/traces/
+test-artifacts/videos/
 
 # System files
 Thumbs.db
