@@ -1,35 +1,36 @@
 package com.example.pages;
+import com.example.utils.ConfigReader;
 import com.microsoft.playwright.Page;
 
-public class ParaBankLoginPage {
-    private Page page;
+public class ParaBankLoginPage extends BasePage{
+
     String registerLink = "text=Register";
     String usernameField = "input[name='username']";
     String passwordField = "input[name='password']";
     String loginButton = "input[value='Log In']";
+    String welcomeMessage = "p.smallText";
 
     public ParaBankLoginPage(Page page) {
-        this.page = page;
+        super(page);
     }
     public void navigateToLoginPage() {
-        page.navigate("https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC");
+        navigateTo(baseUrl);
     }
 
     public void clickRegisterLink() {
-        page.click(registerLink);
+        clickOnElement(registerLink);
     }
 
     public void login(String username, String password) {
-        page.fill(usernameField, username);
-        page.fill(passwordField, password);
-        page.click(loginButton);
+        type(usernameField, username);
+        type(passwordField, password);
+        clickOnElement(loginButton);
     }
 
     public String getWelcomeMessage() {
-        page.waitForSelector("p.smallText", new Page.WaitForSelectorOptions()
+        waitForElement(welcomeMessage, new Page.WaitForSelectorOptions()
                 .setTimeout(5000));
-        return page.locator("p.smallText").textContent();
+        return getElementText(welcomeMessage);
     }
-
 }
 

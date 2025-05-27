@@ -1,7 +1,7 @@
 package com.example.utils;
 
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class ExelReaderUtil {
 public static List<String[]> readExcelSheet(String filePath, String sheetName) {
         List<String[]> dataList = new ArrayList<>();
         try (InputStream is = ExelReaderUtil.class.getClassLoader().getResourceAsStream(filePath);
-             Workbook workbook = new SXSSFWorkbook(is)) {
+             Workbook workbook = new XSSFWorkbook(is)) {
             Sheet sheet = workbook.getSheet(sheetName);
             if(sheet == null) {
                 throw new RuntimeException("Sheet not found: " + sheetName);

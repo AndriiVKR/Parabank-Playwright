@@ -49,6 +49,8 @@ test-artifacts/videos/
 # Sensitive resource files
 src/test/resources/credentials.json
 src/test/resources/registration-data.json
+src/test/resources/config.properties
+src/test/resources/test-cases
 
 # System files
 Thumbs.db
