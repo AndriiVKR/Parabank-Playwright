@@ -52,5 +52,7 @@ src/test/resources/registration-data.json
 src/test/resources/config.properties
 src/test/resources/test-cases
 
+.gitignore
+
 # System files
 Thumbs.db

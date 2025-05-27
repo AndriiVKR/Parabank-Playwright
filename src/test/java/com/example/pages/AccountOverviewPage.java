@@ -3,7 +3,7 @@ package com.example.pages;
 import com.microsoft.playwright.Page;
 
 public class AccountOverviewPage {
-    private Page page;
+    private final Page page;
     private String accountOverviewHeading = "text='Account Overview'";
 
     public AccountOverviewPage(Page page) {
