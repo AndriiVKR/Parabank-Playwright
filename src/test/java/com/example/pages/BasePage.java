@@ -1,10 +1,20 @@
 package com.example.pages;
 
 import com.example.utils.ConfigReader;
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+
+import java.nio.file.Paths;
 
 public abstract class BasePage {
     protected final Page page;
+
+    public void takeScreenshot(String fileName) {
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(Paths.get("screenshots", fileName + ".png"))
+                .setFullPage(true));
+    }
+
 
     String baseUrl = ConfigReader.get("base.url");
     protected String registerUrl = ConfigReader.get("register.url");
@@ -13,24 +23,25 @@ public abstract class BasePage {
         this.page = page;
     }
 
-    public void clickOnElement(String selector) {
-        page.locator(selector).click();
+    public void clickOnElement(Locator selector) {
+        selector.click();
     }
 
-    public void type(String selector, String text) {
-        page.locator(selector).fill(text);
+    public void type(Locator selector, String text) {
+        selector.fill(text);
     }
 
-    public void waitForElement(String selector, Page.WaitForSelectorOptions waitForSelectorOptions) {
-        page.waitForSelector(selector);
+    public void waitForElement(Locator selector, Locator.WaitForOptions waitForOptions) {
+        selector.waitFor(waitForOptions);
     }
 
-    public boolean isElementVisible(String selector) {
-        return page.locator(selector).isVisible();
+    public boolean isElementVisible(Locator selector) {
+        selector.isVisible();
+        return true;
     }
 
-    public String getElementText(String selector) {
-        return page.locator(selector).textContent();
+    public String getElementText(Locator selector) {
+        return selector.textContent();
     }
 
     public void navigateTo(String url) {

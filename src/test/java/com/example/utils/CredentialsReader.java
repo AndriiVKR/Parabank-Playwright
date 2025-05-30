@@ -11,6 +11,8 @@ import java.util.Map;
 public class CredentialsReader {
     private static final String CREDENTIALS_FILE = "credentials.json";
     private static final String REGISTRATION_DATA_FILE = "registration-data.json";
+    public record UserCredentials(String username, String password, String expectedResult) {
+    }
 
     public static Map<String, UserCredentials> loadLoginCredentials() throws IOException {
         Map<String, UserCredentials> credentialsMap = new HashMap<>();
@@ -29,7 +31,8 @@ public class CredentialsReader {
             String id = user.get("id").asText();
             String username = user.get("username").asText();
             String password = user.get("password").asText();
-            credentialsMap.put(id, new UserCredentials(username, password));
+            String expectedResult = user.get("expectedResult").asText();
+            credentialsMap.put(id, new UserCredentials(username, password, expectedResult));
         }
         return credentialsMap;
     }
@@ -57,9 +60,6 @@ public class CredentialsReader {
             dataMap.put(id, new UserRegistrationData(firstName, lastName, address, city, state, zipCode, phone, ssn, password));
         }
         return dataMap;
-    }
-
-    public record UserCredentials(String username, String password) {
     }
 
     public static class UserRegistrationData {
