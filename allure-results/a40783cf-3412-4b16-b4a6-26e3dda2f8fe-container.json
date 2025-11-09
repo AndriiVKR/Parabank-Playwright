@@ -1,1 +1,0 @@
-{"uuid":"a40783cf-3412-4b16-b4a6-26e3dda2f8fe","name":"Regression Suite","children":["47b96a6b-828c-4e11-8ccb-8f371af984f2"],"befores":[{"name":"clearTestArtifacts","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1748645133764,"stop":1748645133808}],"afters":[],"start":1748645133733,"stop":1748645190991}
